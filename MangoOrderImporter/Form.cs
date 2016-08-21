@@ -84,7 +84,7 @@ namespace MangoOrderImporter
                     foreach (DataGridViewRow row in dataGridView.Rows)
                     {
                         // check order already exist
-                        if (IsOrderExist(trans, con, row))
+                        if (IsTrackingNoExist(trans, con, row))
                         {
                             string mangoOrderId = (string)row.Cells["OrderId"].Value;
                             throw new Exception("Mango OrderId " + mangoOrderId + " is already exist.");
@@ -122,11 +122,11 @@ namespace MangoOrderImporter
             }
         }
 
-        private Boolean IsOrderExist(SqlTransaction trans, SqlConnection con, DataGridViewRow row)
+        private Boolean IsTrackingNoExist(SqlTransaction trans, SqlConnection con, DataGridViewRow row)
         {
-            SqlCommand checkOrder = new SqlCommand(SQL.CHECK_ORDER, con, trans);
-            checkOrder.Parameters.AddWithValue("@MangoOrderId", row.Cells["OrderId"].Value);
-            object scalarValue = checkOrder.ExecuteScalar();
+            SqlCommand checkTrackingNo = new SqlCommand(SQL.CHECK_TRACKING_NO, con, trans);
+            checkTrackingNo.Parameters.AddWithValue("@TrackingNumber", row.Cells["TrackingNo"].Value);
+            object scalarValue = checkTrackingNo.ExecuteScalar();
             int count = (int)scalarValue;
             return (count > 0) ? true : false;
         }

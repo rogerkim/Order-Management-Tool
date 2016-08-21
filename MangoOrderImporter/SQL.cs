@@ -16,7 +16,7 @@ namespace MangoOrderImporter
             "values(@OrderId, 'MANGOKR', 'Mango', @MangoOrderId, @MangoOrderId, @OrderDate, '2' , 'Mango', 'Mango.com', 'CC'" +
             ",'CJKE', @MangoOrderId, @Name, @Zipcode, @Mobile, @Address1, @Address2, @Address3, N'망고(의류)');";
 
-        public static readonly string CHECK_ORDER = "SELECT COUNT(ExternOrderKey) FROM [dbo].[orders] WHERE ExternOrderKey = @MangoOrderId;";
+        public static readonly string CHECK_TRACKING_NO = "SELECT COUNT(ExternOrderKey) FROM [dbo].[CartonShipmentDetail] WHERE TrackingNumber = @TrackingNumber;";
 
         public static readonly string INESRT_CARTON = "INSERT INTO [dbo].[CartonShipmentDetail]" +
             "(storerkey, ExternOrderKey, CarrierCode, UCCLabelNo, TrackingNumber)" +
