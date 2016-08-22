@@ -8,7 +8,7 @@ namespace MangoOrderImporter
 {
     public class SQL
     {
-        public static readonly string CONSTRING = "Server=myServerAddress;Database=myDataBase;User Id=myUsername;Password=myPassword;";
+        public static readonly string CONSTRING = "Server=VMHKWMSDBUT4;Database=KRWMS;User Id=****;Password=****;";
 
         public static readonly string INSERT_ORDERS = "insert into [dbo].[orders]" +
             "(orderkey, StorerKey, Facility, ExternOrderKey, M_Company, OrderDate, Type, Userdefine03, Salesman, PmtTerm" +
